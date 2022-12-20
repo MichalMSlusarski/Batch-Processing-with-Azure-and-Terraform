@@ -10,12 +10,14 @@ class HotShot:
 
 def get_xkom_hotshot_product_data() -> HotShot:
 
+    api_key = input("Provide a valid API Key: ")
+    
     headers = {
         'authority': 'mobileapi.x-kom.pl',
         'method': 'GET',
         'path': '/api/v1/xkom/hotShots/current?onlyHeader=true&commentAmount=15',
         'user-agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/108.0.0.0 Safari/537.36',
-        'x-api-key': 'jfsTOgOL23CN2G8Y'
+        'x-api-key': api_key
     }
 
     response = requests.get('https://mobileapi.x-kom.pl/api/v1/xkom/hotShots/current?onlyHeader=true&commentAmount=15', headers=headers)
