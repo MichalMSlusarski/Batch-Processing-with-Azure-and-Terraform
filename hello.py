@@ -7,25 +7,27 @@ import numpy as np
 dataset = []
 
 links = [
-    'https://www.udemy.com/course/40-psychotherapy-approaches/',
-    'https://www.udemy.com/course/accredited-professional-existential-psychotherapy-diploma/',
-    'https://www.udemy.com/course/become-a-couples-counselor-effective-therapies-for-couples-counseling/',
-    'https://www.udemy.com/course/cbt-psychotherapy-certificate-diploma-course/',
-    'https://www.udemy.com/course/emerging-psychotherapy-trends/',
-    'https://www.udemy.com/course/existential-therapy/',
-    'https://www.udemy.com/course/fully-accredited-professional-psychotherapy-diploma-course/',
-    'https://www.udemy.com/course/gestalt-psychotherapy/',
-    'https://www.udemy.com/course/gestalt-therapy-training-accredited-psychotherapy-diploma-certificate/',
-    'https://www.udemy.com/course/intro-psychotherapy/',
-    'https://www.udemy.com/course/practical-mastery-of-psychotherapy/',
-    'https://www.udemy.com/course/psychodynamic-therapy/',
-    'https://www.udemy.com/course/psychotherapy-101/',
-    'https://www.udemy.com/course/psychotherapy-difficult-patients-using-hypnotherapy/',
-    'https://www.udemy.com/course/psychotherapy-skills/',
-    'https://www.udemy.com/course/specialist-certificate-in-cognitive-behavioral-psychotherapy/',
-    'https://www.udemy.com/course/three-yoga-paths-karma-yoga-bhakti-yoga-raja-yoga-online-course/',
-    'https://www.udemy.com/course/transactionalanalysis/'
-]
+    'https://www.udemy.com/course/child-psychology/',
+    'https://www.udemy.com/course/fully-accredited-professional-child-psychology-diploma/',
+    'https://www.udemy.com/course/child-psychology-and-development/',
+    'https://www.udemy.com/course/intro-child-psychology/',
+    'https://www.udemy.com/course/child-psychology-course/',
+    'https://www.udemy.com/course/child-psychology-social-emotional-cognitive-development/',
+    'https://www.udemy.com/course/child-psychology-certification-course-aggression-prevention/',
+    'https://www.udemy.com/course/clinical-child-psychology-diploma-for-child-care/',
+    'https://www.udemy.com/course/child-psychology-learning-and-development/',
+    'https://www.udemy.com/course/accredited-child-psychology-counseling-diploma-certificate-parenting/',
+    'https://www.udemy.com/course/basics-of-child-psychology/',
+    'https://www.udemy.com/course/childpsychologydeepperspective/',
+    'https://www.udemy.com/course/fully-accredited-diploma-in-child-psychology/',
+    'https://www.udemy.com/course/child-psychology-diploma-accredited-certificate/',
+    'https://www.udemy.com/course/child-psychology-masterclass-whats-in-your-childs-brain/',
+    'https://www.udemy.com/course/advanced-child-psychology-certificate-crash-course/',
+    'https://www.udemy.com/course/childpsychology/',
+    'https://www.udemy.com/course/learn-psychological-perspective-of-education-and-learning/',
+    'https://www.udemy.com/course/childsafety/',
+    'https://www.udemy.com/course/parenting-and-child-psychology-teaching-technics/'
+    ]
 
 def scrape_udemy(link_to_scrape):
     request = r.get(link_to_scrape)
