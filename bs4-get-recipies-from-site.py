@@ -8,9 +8,9 @@ def get_recepie_links(keyword: str) -> Set[str]:
     base_url = 'https://www.kwestiasmaku.com'
     request_url = base_url + '/szukaj?search_api_views_fulltext=' + keyword
 
-    recipies = [] #lista wszystkich przepisów na stronie z żądania
-    paths = [] #nazwy ścieżek przepisów
-    links = [] #base_url + sciezka
+    recipies = [] 
+    paths = [] 
+    links = [] 
 
     response = requests.get(request_url)
     soup = BeautifulSoup(response.text, 'html.parser')
@@ -24,6 +24,6 @@ def get_recepie_links(keyword: str) -> Set[str]:
       link = base_url + link
       links.append(link)
 
-    links = list(dict.fromkeys(links)) #jakby były duplikaty
+    links = list(dict.fromkeys(links)) #remove duplicates
 
     return links
