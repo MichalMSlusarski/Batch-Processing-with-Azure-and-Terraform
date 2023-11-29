@@ -1,4 +1,4 @@
-# Simple-Scrapers
+# Process overview
 
 This are some simple scraping tasks I've been doing to test my knowledge of the 'requests', 'bs4' and 'selenium' packages.
 
