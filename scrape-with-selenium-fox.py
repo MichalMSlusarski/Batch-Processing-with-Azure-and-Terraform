@@ -5,12 +5,7 @@ import lxml
 
 driver = webdriver.Chrome(executable_path='D:/Pliki Pobrane/chromedriver_win32/chromedriver.exe')
 
-links = [
-    'https://www.udemy.com/course/40-psychotherapy-approaches/',
-    'https://www.udemy.com/course/accredited-professional-existential-psychotherapy-diploma/',
-    'https://www.udemy.com/course/become-a-couples-counselor-effective-therapies-for-couples-counseling/',
-    'https://www.udemy.com/course/cbt-psychotherapy-certificate-diploma-course/'
-]
+links = []
 
 data = []
 
@@ -30,10 +25,3 @@ for link in links:
 
 driver.close()
     
-
-
-
-
-
-
-data
