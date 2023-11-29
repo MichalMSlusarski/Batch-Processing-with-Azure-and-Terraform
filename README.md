@@ -20,6 +20,8 @@ Throughout the course of the session, an array of data points emerges, which are
 
 At the culmination of each day, a meticulously scheduled routine springs into action within Azure Data Factory. This orchestrated sequence calls upon a Python script that meticulously combs through the session directories. Its mission is to extract the amassed data and mold it into structured formats, often employing CSV as a preferred choice. Once the transformation is complete, the refined data finds its way into pre-defined tables within Azure SQL Database. Here, it is cataloged and organized, poised for deep analytical scrutiny and strategic insights.
 
+## 
+
 ![[img]](https://github.com/MichalMSlusarski/Playtest-data-processing/blob/c1062aa860ce9343def93acdebcb7b638623b32d/process_simplified.png)
 
 ### Features
