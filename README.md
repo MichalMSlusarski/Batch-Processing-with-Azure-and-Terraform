@@ -1,6 +1,6 @@
 # Game Playtest Data Management Project (work in progress)
 
-## Overview
+## About
 
 This project aims to streamline the collection, storage, and organization of game playtest data generated during user sessions. It utilizes Azure Cloud services to manage and transform the data into structured formats for analysis and further insights.
 
@@ -20,9 +20,9 @@ Throughout the course of the session, an array of data points emerges, which are
    
 *At the culmination of each day, a meticulously scheduled routine springs into action within Azure Data Factory. This orchestrated sequence calls upon a Python script that meticulously combs through the session directories. Its mission is to extract the amassed data and mold it into structured formats, often employing CSV as a preferred choice. Once the transformation is complete, the refined data finds its way into pre-defined tables within Azure SQL Database. Here, it is cataloged and organized, poised for deep analytical scrutiny and strategic insights.*
 
-## 
+## Overview
 
-![img]https://github.com/MichalMSlusarski/Playtest-data-processing/blob/b366a196fb7bb0c477984fdf0376ce50ab6216e5/overview.png
+![img](https://github.com/MichalMSlusarski/Playtest-data-processing/blob/b366a196fb7bb0c477984fdf0376ce50ab6216e5/overview.png)
 
 ### Features
 
