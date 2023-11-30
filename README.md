@@ -17,8 +17,8 @@ When the playtester initiates the game, it triggers the start of a session dedic
 Throughout the course of the session, an array of data points emerges, which are stored on device until the session ends. These metrics encompass diverse elements like gameplay recordings, player forms, session events, logs detailing errors or warnings, and real-time performance. Each of these data components is saved in their raw, original formats. Once the session ends, these raw files find their designated repository within the session's directory, securely nestled within Azure Blob Storage.
 
 4. Daily Data Transformation
-
-At the culmination of each day, a meticulously scheduled routine springs into action within Azure Data Factory. This orchestrated sequence calls upon a Python script that meticulously combs through the session directories. Its mission is to extract the amassed data and mold it into structured formats, often employing CSV as a preferred choice. Once the transformation is complete, the refined data finds its way into pre-defined tables within Azure SQL Database. Here, it is cataloged and organized, poised for deep analytical scrutiny and strategic insights.
+   
+*At the culmination of each day, a meticulously scheduled routine springs into action within Azure Data Factory. This orchestrated sequence calls upon a Python script that meticulously combs through the session directories. Its mission is to extract the amassed data and mold it into structured formats, often employing CSV as a preferred choice. Once the transformation is complete, the refined data finds its way into pre-defined tables within Azure SQL Database. Here, it is cataloged and organized, poised for deep analytical scrutiny and strategic insights.*
 
 ## 
 
