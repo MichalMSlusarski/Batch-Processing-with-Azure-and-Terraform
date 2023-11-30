@@ -22,7 +22,7 @@ Throughout the course of the session, an array of data points emerges, which are
 
 ## 
 
-![[img]](https://github.com/MichalMSlusarski/Playtest-data-processing/blob/c1062aa860ce9343def93acdebcb7b638623b32d/process_simplified.png)
+![[img]](https://github.com/MichalMSlusarski/Playtest-data-processing/blob/c1062aa860ce9343def93acdebcb7b638623b32d/overview.png)
 
 ### Features
 
