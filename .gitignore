@@ -1,0 +1,10 @@
+# Ignore Terraform variable files
+*.tfvars
+*.tfvars.json
+
+# Ignore keys.json file
+keys.json
+
+# Ignore configuration files that may contain sensitive information
+*.conf
+

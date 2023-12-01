@@ -1,26 +1,6 @@
 -- Description: Create tables for the Playtest database
 -- The database follows the star schema, with the fact table being the Sessions table.
 
-CREATE TABLE IF NOT EXISTS Sessions (
-    sessionID INT NOT NULL AUTO_INCREMENT,
-    sessionStart DATETIME,
-    sessionStart DATETIME,
-    locationType VARCHAR(255),
-    gameId INT,
-    gameSetupId INT,
-    playerId INT,
-    recordingPath VARCHAR(255),
-    eventsLogsPath VARCHAR(255),
-    systemLogsPath VARCHAR(255),
-    surveyPath VARCHAR(255),
-    comments VARCHAR(255),
-
-    PRIMARY KEY (SessionID),
-    FOREIGN KEY (gameId) REFERENCES Games(gameId),
-    FOREIGN KEY (gameSetupId) REFERENCES GameSetups(gameSetupId),
-    FOREIGN KEY (playerId) REFERENCES Players(playerId)
-);
-
 CREATE TABLE IF NOT EXISTS Players (
     playerId INT NOT NULL AUTO_INCREMENT,
     gender VARCHAR(255),
@@ -69,4 +49,24 @@ CREATE TABLE IF NOT EXISTS Setups (
     isStandardGraphicsSetup BOOLEAN, -- Were the graphics set to the default?
 
     PRIMARY KEY (gameSetupId),
+);
+
+CREATE TABLE IF NOT EXISTS Sessions (
+    sessionID INT NOT NULL AUTO_INCREMENT,
+    sessionStart DATETIME,
+    sessionStart DATETIME,
+    locationType VARCHAR(255),
+    gameId INT,
+    gameSetupId INT,
+    playerId INT,
+    recordingPath VARCHAR(255),
+    eventsLogsPath VARCHAR(255),
+    systemLogsPath VARCHAR(255),
+    surveyPath VARCHAR(255),
+    comments VARCHAR(255),
+
+    PRIMARY KEY (SessionID),
+    FOREIGN KEY (gameId) REFERENCES Games(gameId),
+    FOREIGN KEY (gameSetupId) REFERENCES GameSetups(gameSetupId),
+    FOREIGN KEY (playerId) REFERENCES Players(playerId)
 );
