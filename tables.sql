@@ -1,8 +1,29 @@
 -- Description: Create tables for the Playtest database
 -- The database follows the star schema, with the fact table being the Sessions table.
 
+CREATE TABLE IF NOT EXISTS Users (
+    userId VARCHAR(20) NOT NULL,,
+    username VARCHAR(255),
+    secretPath VARCHAR(255),
+    email VARCHAR(255),
+    country VARCHAR(255),
+    city VARCHAR(255),
+    paymentInfoPath VARCHAR(255),    
+    consentBasic BOOLEAN,
+    consentAnalytics BOOLEAN,
+    consentCampaings BOOLEAN,
+    firstName VARCHAR(255),
+    lastName VARCHAR(255),
+    isActive BOOLEAN,
+    subscriptionType VARCHAR(255),
+    subscriptionStartDate DATETIME,
+    subscriptionEndDate DATETIME,
+
+    PRIMARY KEY (userId)
+);
+
 CREATE TABLE IF NOT EXISTS Players (
-    playerId INT NOT NULL AUTO_INCREMENT,
+    playerId VARCHAR(20) NOT NULL,,
     gender VARCHAR(255),
     age INT,
     playstyle VARCHAR(255), -- This is the player's self-reported player type, e.g. "casual", "hardcore", "explorer", "achiever", etc.
@@ -20,7 +41,7 @@ CREATE TABLE IF NOT EXISTS Players (
 );
 
 CREATE TABLE IF NOT EXISTS Games (
-    gameId INT NOT NULL AUTO_INCREMENT,
+    gameId VARCHAR(20) NOT NULL,,
     gameName VARCHAR(255), -- This is the game's name, e.g. "Overwatch", "League of Legends", "Fortnite", etc.
     genre VARCHAR(255), -- This is the game's genre, e.g. "FPS", "RPG", "RTS", etc.
     subgenre VARCHAR(255), -- This is the game's subgenre, e.g. "MMO", "MOBA", "Battle Royale", etc.
@@ -34,7 +55,7 @@ CREATE TABLE IF NOT EXISTS Games (
 );
 
 CREATE TABLE IF NOT EXISTS Setups (
-    gameSetupId INT NOT NULL AUTO_INCREMENT,
+    gameSetupId VARCHAR(20) NOT NULL,,
     gameSetupName VARCHAR(255),
     gameSetupDescription VARCHAR(255),
     gameResolutionWidth INT,
@@ -52,10 +73,11 @@ CREATE TABLE IF NOT EXISTS Setups (
 );
 
 CREATE TABLE IF NOT EXISTS Sessions (
-    sessionID INT NOT NULL AUTO_INCREMENT,
+    sessionID VARCHAR(20) NOT NULL,,
     sessionStart DATETIME,
     sessionStart DATETIME,
     locationType VARCHAR(255),
+    ownerId INT,
     gameId INT,
     gameSetupId INT,
     playerId INT,
@@ -66,6 +88,8 @@ CREATE TABLE IF NOT EXISTS Sessions (
     comments VARCHAR(255),
 
     PRIMARY KEY (SessionID),
+
+    FOREIGN KEY (ownerId) REFERENCES Players(playerId),
     FOREIGN KEY (gameId) REFERENCES Games(gameId),
     FOREIGN KEY (gameSetupId) REFERENCES GameSetups(gameSetupId),
     FOREIGN KEY (playerId) REFERENCES Players(playerId)
