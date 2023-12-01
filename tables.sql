@@ -8,13 +8,13 @@ CREATE TABLE IF NOT EXISTS Players (
     playstyle VARCHAR(255), -- This is the player's self-reported player type, e.g. "casual", "hardcore", "explorer", "achiever", etc.
     weeklyHours INT, -- This is the player's self-reported weekly hours of gaming
     experienceYears INT, -- This is the player's self-reported years of gaming experience
-    isLeftHanded BOOLEAN, -- This is the player's self-reported handedness
-    needsGlasses BOOLEAN, -- This is the player's self-reported need for glasses
-    needsInputAdaptation BOOLEAN, -- This is the player's self-reported need for input adaptation
-    isColorBlind BOOLEAN, -- This is the player's self-reported color blindness
-    isHearingImpaired BOOLEAN, -- This is the player's self-reported hearing impairment
-    isAutistic BOOLEAN, -- This is the player's self-reported autism
-    isAttentionDeficient BOOLEAN, -- This is the player's self-reported attention deficit
+    isLeftHanded BOOLEAN, 
+    needsGlasses BOOLEAN, 
+    needsInputAdaptation BOOLEAN, 
+    isColorBlind BOOLEAN, 
+    isHearingImpaired BOOLEAN, 
+    isAutistic BOOLEAN, 
+    isAttentionDeficient BOOLEAN,
 
     PRIMARY KEY (playerId)
 );
