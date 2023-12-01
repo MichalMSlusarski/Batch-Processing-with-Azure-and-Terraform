@@ -29,6 +29,6 @@ Beyond the gameplay recordings, playtest sessions yield various semi-structured 
 **1. Playtest Recorder
 2. Blob Storage
 3. Data Factory
-4. Azure SQL database (the big one)
+4. Azure SQL database
 5. Access point**
 
