@@ -3,65 +3,70 @@
 
 CREATE TABLE IF NOT EXISTS Sessions (
     sessionID INT NOT NULL AUTO_INCREMENT,
-    sessionStart DATETIME NOT NULL,
-    sessionStart DATETIME NOT NULL,
-    locationType VARCHAR(255) NOT NULL,
-    gameId VARCHAR(255) NOT NULL,
-    gameBuildId VARCHAR(255) NOT NULL,
-    gameSetupId VARCHAR(255) NOT NULL,
-    playerId INT NOT NULL,
-    recordingPath VARCHAR(255) NOT NULL,
-    playerLogsPath VARCHAR(255) NOT NULL,
-    systemLogsPath VARCHAR(255) NOT NULL,
-    surveyPath VARCHAR(255) NOT NULL,
-    comments VARCHAR(255) NOT NULL,
-    PRIMARY KEY (SessionID)
+    sessionStart DATETIME,
+    sessionStart DATETIME,
+    locationType VARCHAR(255),
+    gameId INT,
+    gameSetupId INT,
+    playerId INT,
+    recordingPath VARCHAR(255),
+    eventsLogsPath VARCHAR(255),
+    systemLogsPath VARCHAR(255),
+    surveyPath VARCHAR(255),
+    comments VARCHAR(255),
+
+    PRIMARY KEY (SessionID),
+    FOREIGN KEY (gameId) REFERENCES Games(gameId),
+    FOREIGN KEY (gameSetupId) REFERENCES GameSetups(gameSetupId),
+    FOREIGN KEY (playerId) REFERENCES Players(playerId)
 );
 
 CREATE TABLE IF NOT EXISTS Players (
     playerId INT NOT NULL AUTO_INCREMENT,
-    gender VARCHAR(255) NOT NULL,
-    age INT NOT NULL,
-    playstyle VARCHAR(255) NOT NULL, -- This is the player's self-reported player type, e.g. "casual", "hardcore", "explorer", "achiever", etc.
-    weeklyHours INT NOT NULL, -- This is the player's self-reported weekly hours of gaming
-    experienceYears INT NOT NULL, -- This is the player's self-reported years of gaming experience
-    isLeftHanded BOOLEAN NOT NULL, -- This is the player's self-reported handedness
-    needsGlasses BOOLEAN NOT NULL, -- This is the player's self-reported need for glasses
-    needsInputAdaptation BOOLEAN NOT NULL, -- This is the player's self-reported need for input adaptation
-    isColorBlind BOOLEAN NOT NULL, -- This is the player's self-reported color blindness
-    isHearingImpaired BOOLEAN NOT NULL, -- This is the player's self-reported hearing impairment
-    isAutistic BOOLEAN NOT NULL, -- This is the player's self-reported autism
-    isAttentionDeficient BOOLEAN NOT NULL, -- This is the player's self-reported attention deficit
+    gender VARCHAR(255),
+    age INT,
+    playstyle VARCHAR(255), -- This is the player's self-reported player type, e.g. "casual", "hardcore", "explorer", "achiever", etc.
+    weeklyHours INT, -- This is the player's self-reported weekly hours of gaming
+    experienceYears INT, -- This is the player's self-reported years of gaming experience
+    isLeftHanded BOOLEAN, -- This is the player's self-reported handedness
+    needsGlasses BOOLEAN, -- This is the player's self-reported need for glasses
+    needsInputAdaptation BOOLEAN, -- This is the player's self-reported need for input adaptation
+    isColorBlind BOOLEAN, -- This is the player's self-reported color blindness
+    isHearingImpaired BOOLEAN, -- This is the player's self-reported hearing impairment
+    isAutistic BOOLEAN, -- This is the player's self-reported autism
+    isAttentionDeficient BOOLEAN, -- This is the player's self-reported attention deficit
 
     PRIMARY KEY (playerId)
 );
 
-CREATE TABLE IF NOT EXISTS GameBuilds (
-    gameBuildId INT NOT NULL AUTO_INCREMENT,
-    gameName VARCHAR(255) NOT NULL,
-    gameVersion VARCHAR(255) NOT NULL,
-    gameBuildVersion VARCHAR(255) NOT NULL,
-    gameBuildDate DATETIME NOT NULL,
-    gameBuildPath VARCHAR(255) NOT NULL,
-    PRIMARY KEY (gameBuildId)
+CREATE TABLE IF NOT EXISTS Games (
+    gameId INT NOT NULL AUTO_INCREMENT,
+    gameName VARCHAR(255), -- This is the game's name, e.g. "Overwatch", "League of Legends", "Fortnite", etc.
+    genre VARCHAR(255), -- This is the game's genre, e.g. "FPS", "RPG", "RTS", etc.
+    subgenre VARCHAR(255), -- This is the game's subgenre, e.g. "MMO", "MOBA", "Battle Royale", etc.
+    isSinglePlayer BOOLEAN,
+    isDevelopmentBuild BOOLEAN,
+    gameVersion VARCHAR(255),
+    gameBuildVersion VARCHAR(255),
+    gameBuildDate DATETIME,
+
+    PRIMARY KEY (gameId)
 );
 
-CREATE TABLE IF NOT EXISTS GameSetups (
+CREATE TABLE IF NOT EXISTS Setups (
     gameSetupId INT NOT NULL AUTO_INCREMENT,
-    gameBuildId INT NOT NULL,
-    gameSetupName VARCHAR(255) NOT NULL,
-    gameSetupDescription VARCHAR(255) NOT NULL,
-    gameResolutionWidth INT NOT NULL,
-    gameResolutionHeight INT NOT NULL,
-    gameResolutionRefreshRate INT NOT NULL,
-    gameResolutionFullscreen BOOLEAN NOT NULL,
-    isStandardInputSetup BOOLEAN NOT NULL, -- Was the input device set to mouse and keyboard?
-    isKeybindingsSetup BOOLEAN NOT NULL, -- Were the keybindings set to the default?
-    isStandardResolutionSetup BOOLEAN NOT NULL, -- Was the monitor set to 1920x1080?
-    isStandardAudioSetup BOOLEAN NOT NULL, -- Was the audio set to 100% volume?
-    isStandardGraphicsSetup BOOLEAN NOT NULL, -- Were the graphics set to the default?
-    isStandardGameplaySetup BOOLEAN NOT NULL, -- Was the gameplay set to the default?
-    isStandardDifficultySetup BOOLEAN NOT NULL, -- Was the difficulty set to the default?
+    gameSetupName VARCHAR(255),
+    gameSetupDescription VARCHAR(255),
+    gameResolutionWidth INT,
+    gameResolutionHeight INT,
+    gameResolutionRefreshRate INT,
+    gameDifficulty VARCHAR(255),
+    isResolutionFullscreen BOOLEAN,
+    isStandardInputSetup BOOLEAN, -- Was the input device set to mouse and keyboard?
+    isKeybindingsSetup BOOLEAN, -- Were the keybindings set to the default?
+    isSubtitles BOOLEAN, -- Were the subtitles enabled?
+    isAudioDescription BOOLEAN, -- Was the audio description enabled?
+    isStandardGraphicsSetup BOOLEAN, -- Were the graphics set to the default?
+
     PRIMARY KEY (gameSetupId),
-    FOREIGN KEY (gameBuildId) REFERENCES GameBuilds(gameBuildId)
 );
