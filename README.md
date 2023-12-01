@@ -12,6 +12,8 @@ As a game developer, playtests are a pivotal part of our journey. They offer an 
 
 Playtest sessions churn out staggering amounts of unstructured data, particularly in the form of gameplay recordings. If you ever took part in a playtest session organized by a large studio, you know that it usually comes down to exactly that - **they record you playing their game**. Even with a moderate group of 20 playtesters, each gaming for 8 hours a day, it results in 160 hours of gameplay footage. Automatically associating recordings with the right session and tying them to detailed player feedback is crucial. Establishing clear connections between sessions, player data, and gameplay footage is pivotal for us to glean meaningful insights.
 
+Believe me, ***I've seen triple A studios manually extracting*** data from their playtest devices. This is not a solved problem yet.
+
 ### The Diversity of Data Streams
 
 Beyond the gameplay recordings, playtest sessions yield various semi-structured data like system logs, event logs, and performance metrics. Centralizing these alongside the gameplay recordings within Azure Blob Storage offers us a comprehensive repository, potentially beneficial for deeper analysis and insights. The goal of our final SQL database is not to actually store everything, as it is to act as a central knowlege hub, organizing our blob storage.
