@@ -1,33 +1,32 @@
 # Game Playtest Data Management Project (work in progress)
 
-## About
+## What?
 
-This project aims to streamline the collection, storage, and organization of game playtest data generated during user sessions. It utilizes Azure Cloud services to manage and transform the data into structured formats for analysis and further insights.
+This project revolves around efficiently managing and organizing game playtest data generated during user sessions, leveraging Azure Cloud services to handle both structured and unstructured data effectively.
 
-## How it Works?
+## Why?
 
-As a playtester engages with the game, the system orchestrates a sequence of events to capture, organize, and transform the generated data:
+As a game developer, playtests are a pivotal part of our journey. They offer an invaluable peek into players' experiences with our creations, but they also present a formidable challenge in managing the data deluge they generate.
 
-1. Session Initialization
+### Taming the Data Tsunami
 
-When the playtester initiates the game, it triggers the start of a session dedicated to the ongoing gameplay experience. Immediately upon the initiation of a session, an automated process is triggered through an in-game script, connected to Azure. This function swiftly creates a dedicated directory within Azure Blob Storage. This directory bears the session ID as its unique identifier, providing a container for the upcoming data influx.
+Playtest sessions churn out staggering amounts of unstructured data, particularly in the form of gameplay recordings. If you ever took part in a playtest session organized by a large studio, you know that it usually comes down to exactly that - **they record you playing their game**. Even with a moderate group of 20 playtesters, each gaming for 8 hours a day, it results in 160 hours of gameplay footage. Automatically associating recordings with the right session and tying them to detailed player feedback is crucial. Establishing clear connections between sessions, player data, and gameplay footage is pivotal for us to glean meaningful insights.
 
-3. Data Capture and Storage
+### The Diversity of Data Streams
 
-Throughout the course of the session, an array of data points emerges, which are stored on device until the session ends. These metrics encompass diverse elements like gameplay recordings, player forms, session events, logs detailing errors or warnings, and real-time performance. Each of these data components is saved in their raw, original formats. Once the session ends, these raw files find their designated repository within the session's directory, securely nestled within Azure Blob Storage.
+Beyond the gameplay recordings, playtest sessions yield various semi-structured data like system logs, event logs, and performance metrics. Centralizing these alongside the gameplay recordings within Azure Blob Storage offers us a comprehensive repository, potentially beneficial for deeper analysis and insights. The goal of our final SQL database is not to actually store everything, as it is to act as a central knowlege hub, organizing our blob storage.
 
-4. Daily Data Transformation
-   
-*At the culmination of each day, a meticulously scheduled routine springs into action within Azure Data Factory. This orchestrated sequence calls upon a Python script that meticulously combs through the session directories. Its mission is to extract the amassed data and mold it into structured formats, often employing CSV as a preferred choice. Once the transformation is complete, the refined data finds its way into pre-defined tables within Azure SQL Database. Here, it is cataloged and organized, poised for deep analytical scrutiny and strategic insights.*
+## How?
 
-## Overview
+### Overview
 
 ![img](https://github.com/MichalMSlusarski/Playtest-data-processing/blob/b366a196fb7bb0c477984fdf0376ce50ab6216e5/overview.png)
 
-### Features
+### The components
 
-- Automatic creation of session directories in Azure Blob Storage.
-- Capture and storage of session data in their original form (e.g., gameplay recordings, player forms, session events, logs).
-- Daily data transformation process using Azure Data Factory to organize and load data into defined SQL tables.
-- Utilization of Python scripts within Azure Data Factory for data extraction and transformation.
+**1. Playtest Recorder
+2. Blob Storage
+3. Data Factory
+4. Azure SQL database (the big one)
+5. Access point**
 
