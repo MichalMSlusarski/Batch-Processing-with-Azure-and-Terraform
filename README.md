@@ -34,7 +34,7 @@ Beyond the gameplay recordings, playtest sessions yield various semi-structured 
 
 ### Scenario
 
-In this example scenario the Playtest session generates the following data:
+In this example scenario the playtest session generates the following data:
 - user info [user.txt]
 - player info [player.txt]
 - hardware data [hardware.txt]
