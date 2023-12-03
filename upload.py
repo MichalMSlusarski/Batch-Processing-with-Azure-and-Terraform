@@ -1,5 +1,6 @@
 import os
 from azure.storage.blob import BlobServiceClient
+from config import AzureConfig
 
 def read_settings_file(settings_file):
     settings = {}
@@ -27,10 +28,8 @@ def upload_files_to_blob_storage(settings_file):
     session_id = active_session_folders[0]
     session_folder_path = os.path.join(active_session_path, session_id)
 
-    # Azure Blob Storage credentials
-    connection_string = "YOUR_AZURE_STORAGE_CONNECTION_STRING"
-
     # Create a BlobServiceClient
+    connection_string = AzureConfig.CONNECTION_STRING
     blob_service_client = BlobServiceClient.from_connection_string(connection_string)
 
     # Create a container named after the session ID if it doesn't exist
