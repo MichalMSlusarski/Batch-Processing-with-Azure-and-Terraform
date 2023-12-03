@@ -1,5 +1,5 @@
 import os
-# from azure.storage.blob import BlobServiceClient
+from azure.storage.blob import BlobServiceClient
 from config import AzureConfig
 
 def get_total_size(folder_path):
@@ -8,6 +8,7 @@ def get_total_size(folder_path):
         for file in files:
             file_path = os.path.join(path, file)
             total_size += os.path.getsize(file_path)
+    print(f"Total size: {total_size}")        
     return total_size
 
 def read_settings_file(settings_file):
@@ -38,13 +39,13 @@ def upload_files_to_blob_storage(settings_file):
 
     # Create a BlobServiceClient
     connection_string = AzureConfig.CONNECTION_STRING
-    # blob_service_client = BlobServiceClient.from_connection_string(connection_string)
+    blob_service_client = BlobServiceClient.from_connection_string(connection_string)
 
     # Create a container named after the session ID if it doesn't exist
     container_name = session_id.lower()
-    # container_client = blob_service_client.get_container_client(container_name)
-    # if not container_client.exists():
-    #     container_client.create_container()
+    container_client = blob_service_client.get_container_client(container_name)
+    if not container_client.exists():
+        container_client.create_container()
     
     all_files_in_session = os.listdir(session_folder_path)
     final_list_of_files_to_upload = []
@@ -93,8 +94,14 @@ def upload_files_to_blob_storage(settings_file):
 
     # Upload all files in session folder
     print("Uploading files...")
-    
 
+    for file_name in all_files_in_session:
+        file_path = os.path.join(session_folder_path, file_name)
+        blob_client = blob_service_client.get_blob_client(container=container_name, blob=file_name)
+        with open(file_path, "rb") as data:
+            blob_client.upload_blob(data)
+        print(f"Uploaded '{file_name}' to '{container_name}' container.")
+    
     # Delete the session folder after successful upload
     # if os.path.exists(session_folder_path):
     #     os.rmdir(session_folder_path)
