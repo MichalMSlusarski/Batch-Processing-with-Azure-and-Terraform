@@ -42,6 +42,7 @@ In this example scenario the Playtest session generates the following data:
 - event logs [events.csv]
 - system logs [system.csv]
 - gameplay footage [recording.mp4]
+
 *In final app, each generated file should be proceeded by session_id*
 
 
