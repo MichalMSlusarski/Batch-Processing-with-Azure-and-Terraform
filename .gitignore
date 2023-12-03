@@ -7,4 +7,5 @@ keys.json
 
 # Ignore configuration files that may contain sensitive information
 *.conf
+config.py
 
