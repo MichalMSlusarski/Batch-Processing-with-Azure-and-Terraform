@@ -1,5 +1,5 @@
 import os
-from azure.storage.blob import BlobServiceClient
+# from azure.storage.blob import BlobServiceClient
 from config import AzureConfig
 
 def get_total_size(folder_path):
@@ -30,7 +30,7 @@ def upload_files_to_blob_storage(settings_file):
     active_session_folders = os.listdir(active_session_path)
 
     if len(active_session_folders) != 1: 
-        print("Error: There should be exactly one folder inside 'active_session'.")
+        print(f"Error: There should be exactly one folder inside 'active_session'. Found: {len(active_session_folders)}")
         return
 
     session_id = active_session_folders[0]
@@ -38,13 +38,13 @@ def upload_files_to_blob_storage(settings_file):
 
     # Create a BlobServiceClient
     connection_string = AzureConfig.CONNECTION_STRING
-    blob_service_client = BlobServiceClient.from_connection_string(connection_string)
+    # blob_service_client = BlobServiceClient.from_connection_string(connection_string)
 
     # Create a container named after the session ID if it doesn't exist
     container_name = session_id.lower()
-    container_client = blob_service_client.get_container_client(container_name)
-    if not container_client.exists():
-        container_client.create_container()
+    # container_client = blob_service_client.get_container_client(container_name)
+    # if not container_client.exists():
+    #     container_client.create_container()
     
     all_files_in_session = os.listdir(session_folder_path)
     final_list_of_files_to_upload = []
@@ -75,7 +75,7 @@ def upload_files_to_blob_storage(settings_file):
     critical_files_to_upload = ['user.txt', 'player.txt', 'hardware.txt', 'setup.txt', 'events.csv', 'system.csv', 'recording.mp4']
     for file_name in critical_files_to_upload:
         if file_name in all_files_in_session:
-            final_list_of_files_to_upload.append(file_name)
+            continue
         else:
             print(f"Error: '{file_name}' not found in session folder. Would you like to upload anyway? (y/n)")
             user_input = input()
@@ -85,28 +85,15 @@ def upload_files_to_blob_storage(settings_file):
                 print("Upload cancelled.")
                 return
 
+    # Inside the session_folder_path create an 'others.txt' file with a list of all other files in the session folder that are not critical files
+    other_files = [file_name for file_name in all_files_in_session if file_name not in critical_files_to_upload]
+    with open(os.path.join(session_folder_path, 'others.txt'), 'w') as file:
+        for file_name in other_files:
+            file.write(file_name + '\n')
 
-
+    # Upload all files in session folder
+    print("Uploading files...")
     
-
-
-    
-
-
-    missing_files = []
-    for file_name in critical_files_to_upload:
-        file_path = os.path.join(session_folder_path, file_name)
-        if os.path.exists(file_path):
-            # Upload file to Azure Blob Storage
-            blob_client = blob_service_client.get_blob_client(container=container_name, blob=file_name)
-            with open(file_path, "rb") as data:
-                blob_client.upload_blob(data, overwrite=True)
-        else:
-            missing_files.append(file_name)
-
-    if missing_files:
-        print("The following files are missing and were not uploaded to Azure Blob Storage:")
-        print(", ".join(missing_files))
 
     # Delete the session folder after successful upload
     # if os.path.exists(session_folder_path):
