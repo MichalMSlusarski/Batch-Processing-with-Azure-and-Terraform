@@ -38,7 +38,7 @@ def upload_files_to_blob_storage(settings_file):
     if not container_client.exists():
         container_client.create_container()
 
-    # List of files to upload
+    # List of files to upload that follows the structure of the SQL database
     files_to_upload = [
         'user.txt', 'player.json', 'form.json',
         'hardware.json', 'setup.json', 'events.csv', 'system.csv'
