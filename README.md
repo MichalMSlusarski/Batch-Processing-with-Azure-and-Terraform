@@ -24,7 +24,7 @@ Beyond the gameplay recordings, playtest sessions yield various semi-structured 
 
 ![img](https://github.com/MichalMSlusarski/Playtest-data-processing/blob/b366a196fb7bb0c477984fdf0376ce50ab6216e5/overview.png)
 
-### The components
+### Components
 
 **1. Playtest Session Manager
 2. Blob Storage
