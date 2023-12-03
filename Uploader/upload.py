@@ -44,7 +44,6 @@ def get_session_id_and_path(active_session_path):
     return session_id, session_folder_path
 
 def create_blob_service_and_container(session_id):
-    # Create a BlobServiceClient
     connection_string = AzureConfig.CONNECTION_STRING
     blob_service_client = BlobServiceClient.from_connection_string(connection_string)
 
