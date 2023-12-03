@@ -26,9 +26,21 @@ Beyond the gameplay recordings, playtest sessions yield various semi-structured 
 
 ### The components
 
-**1. Playtest Recorder
+**1. Playtest Session Manager
 2. Blob Storage
 3. Data Factory
 4. Azure SQL database
 5. Access point**
+
+### Scenario
+
+In this example scenario the Playtest session generates the following data:
+- user credentials string [user.txt]
+- player info [player.json]
+- post-gameplay form [form.json]
+- hardware data [hardware.json]
+- gameplay setup data [setup.json]
+- event logs [events.csv]
+- system logs [system.csv]
+
 
