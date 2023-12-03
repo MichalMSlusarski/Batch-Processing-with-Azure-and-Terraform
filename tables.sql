@@ -77,14 +77,14 @@ CREATE TABLE IF NOT EXISTS Sessions (
     sessionStart DATETIME,
     sessionStart DATETIME,
     locationType VARCHAR(255),
-    ownerId INT,
+    ownerId INT, -- This is the userId that owns the session and can modify data
     gameId INT,
     gameSetupId INT,
     playerId INT,
     recordingPath VARCHAR(255),
     eventsLogsPath VARCHAR(255),
     systemLogsPath VARCHAR(255),
-    surveyPath VARCHAR(255),
+    othersPath VARCHAR(255), -- path to 'others.txt' listing other files that are part of the session
     comments VARCHAR(255),
 
     PRIMARY KEY (SessionID),
