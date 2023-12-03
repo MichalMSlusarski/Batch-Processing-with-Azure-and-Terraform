@@ -6,7 +6,15 @@ This project revolves around efficiently managing and organizing game playtest d
 
 ## Why?
 
-As a game developer, playtests are a pivotal part of our journey. They offer an invaluable peek into players' experiences with our creations, but they also present a formidable challenge in managing the data deluge they generate.
+In 2009 Mike Ambinder spoke at GDC highlighting Valve's extensive approach to playtesting:
+
+✔️ We want to make informed decisions  
+✔️ We don’t know what’s best (players do)    
+✔️ We should aim to create a feedback loop between design and playtest  
+
+Valve revolutionized the game development landscape by integrating playtesting as a fundamental part of the design process. They emphasized that it's not just a last-minute tweak for polishing; it's a core element from the very start. This approach was an early showcase of embracing data-driven design, and it turned out to be a massive success.
+
+However, within the realm of game development, establishing standardized playtesting methodologies and a single commonly used software remains a challenge. I've participated in numerous playtesting sessions across different studios, and each one had its own unique approach. Yet, there were underlying similarities.
 
 ### Taming the Data Tsunami
 
@@ -16,7 +24,7 @@ Believe me, ***I've seen triple A studios manually extracting*** data from their
 
 ### The Diversity of Data Streams
 
-Beyond the gameplay recordings, playtest sessions yield various semi-structured data like system logs, event logs, and performance metrics. Centralizing these alongside the gameplay recordings within Azure Blob Storage offers us a comprehensive repository, potentially beneficial for deeper analysis and insights. The goal of our final SQL database is not to actually store everything, as it is to act as a central knowlege hub, organizing our blob storage.
+During playtest sessions, we gather lots of different data like system logs, event logs, and how well the game performs. Centralizing these alongside the gameplay recordings within Azure Blob Storage offers us a comprehensive repository, potentially beneficial for deeper analysis and insights. The goal of our final SQL database is not to actually store everything, as it is to act as a central knowlege hub, organizing our blob storage.
 
 ## How?
 
