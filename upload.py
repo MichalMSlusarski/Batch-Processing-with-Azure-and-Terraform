@@ -59,7 +59,6 @@ def upload_files_to_blob_storage(settings_file):
     if missing_files:
         print("The following files are missing and were not uploaded to Azure Blob Storage:")
         print(", ".join(missing_files))
-        # You can also notify the user or handle the missing files according to your requirements
 
     # Delete the session folder after successful upload
     if os.path.exists(session_folder_path):
