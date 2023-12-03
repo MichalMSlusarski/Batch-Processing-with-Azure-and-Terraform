@@ -35,12 +35,13 @@ Beyond the gameplay recordings, playtest sessions yield various semi-structured 
 ### Scenario
 
 In this example scenario the Playtest session generates the following data:
-- user credentials string [user.txt]
-- player info [player.json]
-- post-gameplay form [form.json]
-- hardware data [hardware.json]
-- gameplay setup data [setup.json]
+- user info [user.txt]
+- player info [player.txt]
+- hardware data [hardware.txt]
+- gameplay setup data [setup.txt]
 - event logs [events.csv]
 - system logs [system.csv]
+- gameplay footage [recording.mp4]
+*In final app, each generated file should be proceeded by session_id*
 
 
