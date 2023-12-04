@@ -57,6 +57,9 @@ In this example scenario the playtest session generates the following data:
 The upload.py script helps move playtest session data to Azure Blob Storage (ABS). It looks for the right session folder created by the Playtest Session Manager. Before sending the data, it checks how big the files are and what type they are. If all the files together are larger than 2 GB or if there are some odd types of files, it stops and tells you about the problem. It also checks if the most important files for a database are there. If any of these important files are missing, it asks if it's okay to continue without them. If anything goes wrong while sending the data, it will let you know and stop to keep things safe. The script tries to sort out which files are really important. If the important ones aren't too big, it might upload other files too. It keeps track of these extra files in a file called 'others.txt'. This way, it makes sure to handle the playtest session data carefully and make the important parts safe before doing anything else.
 
 #### Storage
-All data is stored as blobs, in Azure Blob Storage. For each session, there's an appropriate container.
+All data is stored as blobs, in Azure Blob Storage. For each session, there's an appropriate container. Nothing too complex really.
+
+#### Transformation
+The transformation process is all about populating the SQL database. 
 
 
