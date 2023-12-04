@@ -101,6 +101,8 @@ def create_others_file(session_folder_path, all_files_in_session, critical_files
     with open(os.path.join(session_folder_path, 'others.txt'), 'w') as file:
         for file_name in other_files:
             file.write(file_name + '\n')
+    
+    all_files_in_session.append('others.txt')
 
 
 def upload_files(blob_service_client, container_name, session_folder_path, all_files_in_session):
