@@ -125,6 +125,7 @@ def upload_files(blob_service_client, container_name, session_folder_path, all_f
     #     print(f"Session folder '{session_id}' deleted after successful upload.")
 
 def main(settings_file, acceptable_file_extensions, critical_files_to_upload):
+    max_total_file_size = 2000000000 # 2 GB
     active_session_path = read_and_validate_settings(settings_file)
     if not active_session_path:
         return
@@ -148,13 +149,12 @@ def main(settings_file, acceptable_file_extensions, critical_files_to_upload):
     upload_files(blob_service_client, container_name, session_folder_path, all_files_in_session)
 
 if __name__ == "__main__":
-    settings_file_path = "settings.txt"
+    settings_file_path = "Uploader\\settings.txt"
     acceptable_file_extensions = ['.txt', '.csv', '.mp4', '.mp3', '.jpg', '.jpeg', '.png', '.xml', '.json', '.html']
     critical_files_to_upload = ['user.txt', 'player.txt', 'hardware.txt', 'setup.txt', 'events.csv', 'system.csv', 'recording.mp4']
-    max_total_file_size = 2000000000 # 2 GB
-    
+
     try:
-        main(settings_file_path, max_total_file_size, acceptable_file_extensions, critical_files_to_upload)
+        main(settings_file_path, acceptable_file_extensions, critical_files_to_upload)
 
     except Exception as ex:
         print('Exception:')
