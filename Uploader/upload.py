@@ -152,5 +152,10 @@ if __name__ == "__main__":
     acceptable_file_extensions = ['.txt', '.csv', '.mp4', '.mp3', '.jpg', '.jpeg', '.png', '.xml', '.json', '.html']
     critical_files_to_upload = ['user.txt', 'player.txt', 'hardware.txt', 'setup.txt', 'events.csv', 'system.csv', 'recording.mp4']
     max_total_file_size = 2000000000 # 2 GB
+    
+    try:
+        main(settings_file_path, max_total_file_size, acceptable_file_extensions, critical_files_to_upload)
 
-    main(settings_file_path, max_total_file_size, acceptable_file_extensions, critical_files_to_upload)
+    except Exception as ex:
+        print('Exception:')
+        print(ex)
