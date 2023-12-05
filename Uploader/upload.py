@@ -153,7 +153,7 @@ def main(settings_file, acceptable_file_extensions, critical_files_to_upload):
 if __name__ == "__main__":
     settings_file_path = "Uploader\\settings.txt"
     acceptable_file_extensions = ['.txt', '.csv', '.mp4', '.mp3', '.jpg', '.jpeg', '.png', '.xml', '.json', '.html']
-    critical_files_to_upload = ['user.txt', 'player.txt', 'hardware.txt', 'setup.txt', 'events.csv', 'system.csv', 'recording.mp4']
+    critical_files_to_upload = ['user.json', 'player.json', 'hardware.json', 'setup.json', 'events.csv', 'system.csv', 'recording.mp4']
 
     try:
         main(settings_file_path, acceptable_file_extensions, critical_files_to_upload)
