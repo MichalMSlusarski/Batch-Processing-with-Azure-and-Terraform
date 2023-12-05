@@ -43,10 +43,10 @@ During playtest sessions, we gather lots of different data like system logs, eve
 ### Scenario
 
 In this example scenario the playtest session generates the following data:
-- user info [user.txt]
-- player info [player.txt]
-- hardware data [hardware.txt]
-- gameplay setup data [setup.txt]
+- user info [user.json]
+- player info [player.json]
+- hardware data [hardware.json]
+- gameplay setup data [setup.json]
 - event logs [events.csv]
 - system logs [system.csv]
 - gameplay footage [recording.mp4]

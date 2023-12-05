@@ -1,25 +1,38 @@
-import pyodbc
+import json
+import os
 
-def insert_user_info(user_info, db_config):
-    conn = pyodbc.connect('DRIVER={ODBC Driver 17 for SQL Server};SERVER=' + db_config['server'] + ';DATABASE=' + db_config['database'] + ';UID=' + db_config['username'] + ';PWD=' + db_config['password'])
-    cursor = conn.cursor()
+def generate_insert_from_json(json_file, table_name):
+    with open(json_file, 'r') as file:
+        data = json.load(file)
 
-    columns = ', '.join(user_info.keys())
-    placeholders = ', '.join('?' * len(user_info))
-    query = f"INSERT INTO Users ({columns}) VALUES ({placeholders})"
+    columns = []
+    values = []
 
-    cursor.execute(query, list(user_info.values()))
-    conn.commit()
+    def format_value(value):
+        if isinstance(value, bool):
+            return int(value)
+        elif isinstance(value, str):
+            return f"'{value}'"
+        else:
+            return value
 
-    cursor.close()
-    conn.close()
+    for key, value in data.items():
+        columns.append(key)
+        values.append(format_value(value))
 
-# Usage:
-user_info = parse_user_info('user.txt')
-db_config = {
-    'server': 'your_server.database.windows.net',
-    'database': 'your_database',
-    'username': 'your_username',
-    'password': 'your_password'
-}
-insert_user_info(user_info, db_config)
+    sql_insert = f"INSERT INTO {table_name} ({', '.join(columns)}) VALUES ({', '.join(str(v) for v in values)})"
+    return sql_insert
+
+# Directory containing JSON files
+directory = 'path_to_directory_containing_json_files'
+
+# Table name for SQL insert statement
+table_name = 'YourTableName'
+
+# Loop through each file in the directory
+for filename in os.listdir(directory):
+    if filename.endswith('.json'):
+        file_path = os.path.join(directory, filename)
+        sql_insert = generate_insert_from_json(file_path, table_name)
+        print(sql_insert)  # Perform database operation here with sql_insert
+
