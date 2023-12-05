@@ -1,0 +1,15 @@
+{
+    "gameSetupId": "exampleGameSetupId",
+    "gameSetupName": "Example Setup",
+    "gameSetupDescription": "Description of the setup",
+    "gameResolutionWidth": 1920,
+    "gameResolutionHeight": 1080,
+    "gameResolutionRefreshRate": 60,
+    "gameDifficulty": "Medium",
+    "isResolutionFullscreen": true,
+    "isStandardInputSetup": true,
+    "isKeybindingsSetup": true,
+    "isSubtitles": true,
+    "isAudioDescription": false,
+    "isStandardGraphicsSetup": true
+}

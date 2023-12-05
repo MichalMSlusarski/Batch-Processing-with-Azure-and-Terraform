@@ -1,0 +1,18 @@
+{
+    "userId": "example00000",
+    "username": "exampleName",
+    "secretPath": "example\\path",
+    "email": "example@example.com",
+    "country": "Example",
+    "city": "Examplestad",
+    "paymentInfoPath": "example",
+    "consentBasic": false,
+    "consentAnalytics": false,
+    "consentCampaings": false,
+    "firstName": "Example",
+    "lastName": "Example",
+    "isActive": false,
+    "subscriptionType": "Example",
+    "subscriptionStartDate": "2000-01-01",
+    "subscriptionEndDate": "2000-01-01"
+}

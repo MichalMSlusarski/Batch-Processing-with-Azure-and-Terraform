@@ -1,0 +1,23 @@
+{
+    "hardwareId": "examplePCId1",
+    "hardwareType": "PC",
+    "CPU_model": "Ryzen 9 5900X",
+    "CPU_cores": 12,
+    "CPU_threads": 24,
+    "CPU_baseClockGHz": 3.7,
+    "CPU_boostClockGHz": 4.8,
+    "RAM_model": "Trident Z Neo",
+    "RAM_capacityGB": 32,
+    "RAM_speedMHz": 3600,
+    "RAM_type": "DDR4",
+    "RAM_casLatency": 16,
+    "GPU_model": "GeForce RTX 3080",
+    "GPU_vramGB": 10,
+    "GPU_coreClockMHz": 1440,
+    "GPU_boostClockMHz": 1710,
+    "Motherboard_brand": "ASUS",
+    "Motherboard_model": "ROG Strix X570-E Gaming",
+    "Motherboard_chipset": "AMD X570",
+    "Motherboard_socket": "AM4",
+    "OperatingSystem": "Windows 10 Pro"
+}

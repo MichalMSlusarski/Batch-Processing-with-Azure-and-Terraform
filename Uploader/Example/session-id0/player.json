@@ -1,0 +1,15 @@
+{
+    "playerId": "examplePlayerId",
+    "gender": "male",
+    "age": 25,
+    "playstyle": "casual",
+    "weeklyHours": 15,
+    "experienceYears": 5,
+    "isLeftHanded": false,
+    "needsGlasses": true,
+    "needsInputAdaptation": false,
+    "isColorBlind": false,
+    "isHearingImpaired": false,
+    "isAutistic": false,
+    "isAttentionDeficient": true
+}
