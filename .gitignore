@@ -9,3 +9,5 @@ keys.json
 *.conf
 config.py
 
+output.sql
+
