@@ -1,0 +1,32 @@
+{
+    "name": "MyPipeline",
+    "properties": {
+        "activities": [
+            {
+                "name": "RunPythonScript",
+                "type": "AzureBatch",
+                "linkedServiceName": {
+                    "referenceName": "<YourAzureBatchLinkedServiceName>",
+                    "type": "LinkedServiceReference"
+                },
+                "typeProperties": {
+                    "batchReference": {
+                        "accountName": "<YourAzureBatchAccountName>",
+                        "poolName": "<YourAzureBatchPoolName>"
+                    },
+                    "scriptPath": "<PathToYourPythonScriptInBlobStorage>",
+                    "scriptLinkedService": {
+                        "referenceName": "<YourBlobStorageLinkedServiceName>",
+                        "type": "LinkedServiceReference"
+                    },
+                    "arguments": [
+                        "<Argument1>",
+                        "<Argument2>",
+                        "<Argument3>"
+                        // Add more arguments if needed
+                    ]
+                }
+            }
+        ]
+    }
+}
