@@ -11,3 +11,5 @@ config.py
 
 output.sql
 
+__pycache__/
+
