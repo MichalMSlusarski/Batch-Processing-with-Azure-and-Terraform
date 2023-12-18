@@ -63,8 +63,8 @@ resource "azurerm_sql_server" "example_sql_server" {
   resource_group_name          = azurerm_resource_group.example_rg.name
   location                     = azurerm_resource_group.example_rg.location
   version                      = "12.0"
-  administrator_login          = "adminuser"
-  administrator_login_password = "AdminPassword123!"
+  administrator_login          = "var.adminuser"
+  administrator_login_password = "var.adminpassword"
 
   tags = {
     environment = "production"

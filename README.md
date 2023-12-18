@@ -60,6 +60,6 @@ The upload.py script helps move playtest session data to Azure Blob Storage (ABS
 All data is stored as blobs, in Azure Blob Storage. For each session, there's an appropriate container. Nothing too complex really.
 
 #### Transformation
-The transformation process is all about populating the SQL database. 
+The transformation process is all about populating the SQL database. More on that later.
 
 
