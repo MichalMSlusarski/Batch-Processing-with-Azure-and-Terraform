@@ -94,6 +94,9 @@ CREATE TABLE Sessions (
 
 CREATE TABLE Permissions (
     userId VARCHAR(20) NOT NULL,
-    sessioId VARCHAR(20) NOT NULL,
+    sessionId VARCHAR(20) NOT NULL,
     permissionType VARCHAR(64),
-)
+
+    FOREIGN KEY (userId) REFERENCES Users(userId),
+    FOREIGN KEY (sessionId) REFERENCES Sessions(sessionId)
+);
