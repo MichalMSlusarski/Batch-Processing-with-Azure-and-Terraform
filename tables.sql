@@ -72,6 +72,7 @@ CREATE TABLE Setups (
 CREATE TABLE Sessions (
     sessionID VARCHAR(20) NOT NULL,
     sessionStart DATETIME2,
+    sessionEnd DATETIME2,
     locationType VARCHAR(64),
     ownerId VARCHAR(20),
     gameId VARCHAR(20),
@@ -90,3 +91,9 @@ CREATE TABLE Sessions (
     FOREIGN KEY (gameSetupId) REFERENCES Setups(gameSetupId),
     FOREIGN KEY (playerId) REFERENCES Players(playerId)
 );
+
+CREATE TABLE Permissions (
+    userId VARCHAR(20) NOT NULL,
+    sessioId VARCHAR(20) NOT NULL,
+    permissionType VARCHAR(64),
+)
