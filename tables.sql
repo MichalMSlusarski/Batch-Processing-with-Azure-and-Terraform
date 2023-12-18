@@ -1,6 +1,3 @@
--- Description: Create tables for the Playtest database
--- The database follows the star schema, with the fact table being the Sessions table.
-
 CREATE TABLE Users (
     userId VARCHAR(20) NOT NULL,
     username VARCHAR(64),
@@ -9,15 +6,15 @@ CREATE TABLE Users (
     country VARCHAR(64),
     city VARCHAR(64),
     paymentInfoPath VARCHAR(64),    
-    consentBasic BOOLEAN,
-    consentAnalytics BOOLEAN,
-    consentCampaings BOOLEAN,
+    consentBasic BIT,
+    consentAnalytics BIT,
+    consentCampaings BIT,
     firstName VARCHAR(64),
     lastName VARCHAR(64),
-    isActive BOOLEAN,
+    isActive BIT,
     subscriptionType VARCHAR(64),
-    subscriptionStartDate DATETIME,
-    subscriptionEndDate DATETIME,
+    subscriptionStartDate DATETIME2,
+    subscriptionEndDate DATETIME2,
 
     PRIMARY KEY (userId)
 );
@@ -26,30 +23,30 @@ CREATE TABLE Players (
     playerId VARCHAR(20) NOT NULL,
     gender VARCHAR(64),
     age INT,
-    playstyle VARCHAR(64), -- This is the player's self-reported player type, e.g. "casual", "hardcore", "explorer", "achiever", etc.
-    weeklyHours INT, -- This is the player's self-reported weekly hours of gaming
-    experienceYears INT, -- This is the player's self-reported years of gaming experience
-    isLeftHanded BOOLEAN, 
-    needsGlasses BOOLEAN, 
-    needsInputAdaptation BOOLEAN, 
-    isColorBlind BOOLEAN, 
-    isHearingImpaired BOOLEAN, 
-    isAutistic BOOLEAN, 
-    isAttentionDeficient BOOLEAN,
+    playstyle VARCHAR(64),
+    weeklyHours INT,
+    experienceYears INT,
+    isLeftHanded BIT, 
+    needsGlasses BIT, 
+    needsInputAdaptation BIT, 
+    isColorBlind BIT, 
+    isHearingImpaired BIT, 
+    isAutistic BIT, 
+    isAttentionDeficient BIT,
 
     PRIMARY KEY (playerId)
 );
 
 CREATE TABLE Games (
     gameId VARCHAR(20) NOT NULL,
-    gameName VARCHAR(64), -- This is the game's name, e.g. "Overwatch", "League of Legends", "Fortnite", etc.
-    genre VARCHAR(64), -- This is the game's genre, e.g. "FPS", "RPG", "RTS", etc.
-    subgenre VARCHAR(64), -- This is the game's subgenre, e.g. "MMO", "MOBA", "Battle Royale", etc.
-    isSinglePlayer BOOLEAN,
-    isDevelopmentBuild BOOLEAN,
+    gameName VARCHAR(64),
+    genre VARCHAR(64),
+    subgenre VARCHAR(64),
+    isSinglePlayer BIT,
+    isDevelopmentBuild BIT,
     gameVersion VARCHAR(64),
     gameBuildVersion VARCHAR(64),
-    gameBuildDate DATETIME,
+    gameBuildDate DATETIME2,
 
     PRIMARY KEY (gameId)
 );
@@ -62,35 +59,34 @@ CREATE TABLE Setups (
     gameResolutionHeight INT,
     gameResolutionRefreshRate INT,
     gameDifficulty VARCHAR(64),
-    isResolutionFullscreen BOOLEAN,
-    isStandardInputSetup BOOLEAN, -- Was the input device set to mouse and keyboard?
-    isKeybindingsSetup BOOLEAN, -- Were the keybindings set to the default?
-    isSubtitles BOOLEAN, -- Were the subtitles enabled?
-    isAudioDescription BOOLEAN, -- Was the audio description enabled?
-    isStandardGraphicsSetup BOOLEAN, -- Were the graphics set to the default?
+    isResolutionFullscreen BIT,
+    isStandardInputSetup BIT,
+    isKeybindingsSetup BIT,
+    isSubtitles BIT,
+    isAudioDescription BIT,
+    isStandardGraphicsSetup BIT,
 
     PRIMARY KEY (gameSetupId)
 );
 
 CREATE TABLE Sessions (
-    sessionID VARCHAR(20) NOT NULL,,
-    sessionStart DATETIME,
-    sessionStart DATETIME,
+    sessionID VARCHAR(20) NOT NULL,
+    sessionStart DATETIME2,
     locationType VARCHAR(64),
-    ownerId INT, -- This is the userId that owns the session and can modify data
+    ownerId INT,
     gameId INT,
     gameSetupId INT,
     playerId INT,
     recordingPath VARCHAR(64),
     eventsLogsPath VARCHAR(64),
     systemLogsPath VARCHAR(64),
-    othersPath VARCHAR(64), -- path to 'others.txt' listing other files that are part of the session
+    othersPath VARCHAR(64),
     comments VARCHAR(64),
 
-    PRIMARY KEY (SessionID),
+    PRIMARY KEY (sessionID),
 
     FOREIGN KEY (ownerId) REFERENCES Players(playerId),
     FOREIGN KEY (gameId) REFERENCES Games(gameId),
-    FOREIGN KEY (gameSetupId) REFERENCES GameSetups(gameSetupId),
+    FOREIGN KEY (gameSetupId) REFERENCES Setups(gameSetupId),
     FOREIGN KEY (playerId) REFERENCES Players(playerId)
 );
