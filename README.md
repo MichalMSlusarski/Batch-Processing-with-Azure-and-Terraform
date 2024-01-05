@@ -65,6 +65,6 @@ The structured database is used mostly by the Playtesting App to organize data f
 ![img](tables-erd.jpg)
 
 #### Transformation
-The transformation process is all about populating the SQL database. More on that later.
+The main part of the process involves moving data from JSON files stored in Azure Blob Storage into an SQL database. To make this happen, a Python script is used. This script connects to Azure Blob Storage, gets the JSON files, and converts their content into SQL format. It separates this conversion task into a different part of the code to keep things organized. Once the JSON data is converted, the script creates SQL commands and saves them in a file. Ultimately, this whole process simplifies the transformation of data from Azure Blob Storage into SQL-ready instructions.
 
 
