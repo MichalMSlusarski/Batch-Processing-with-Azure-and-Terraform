@@ -1,1 +1,1 @@
-### This part is work in progress
+Populate SQL tables with information from JSON files generated during the playtest session.
